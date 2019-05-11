@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Neighborhood Map</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="options-box">
+            <h1>Nick Locations</h1>
+            <div>
+                <input type="text" data-bind="value: filterText, valueUpdate: 'afterkeydown'" />
+            </div>
+            <hr>
+            <div>
+                <h3>List</h3>
+                <ul data-bind="foreach: theListFiltered">
+                    <li>
+                        <p class="place-list" data-bind="text: title, click: $root.selectPlace"></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="map"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="assets/js/lib/knockout-3.2.0.js"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=AIzaSyAF1w3vF1_GEntBalh-hUBq_CEGHjWF82I&v=3&callback=initMap">
+    </script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
