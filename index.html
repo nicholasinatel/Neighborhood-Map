@@ -6,24 +6,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+    </script>
     <link rel="stylesheet" href="assets/css/main.css" />
+
 </head>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Nick Locations</a>
+        <button data-bind="click: clickToggle" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+            </ul>
+        </div>
+    </nav>
+</header>
 
 <body>
-    <div class="container">
-        <div class="options-box">
+    <div class="container-fluid">
+        <div class="options-box" data-bind="visible: toggleShow">
             <h1>Nick Locations</h1>
             <div>
-                <input type="text" data-bind="value: filterText, valueUpdate: 'afterkeydown'" />
+                <input id="nick-location-input" type="text"
+                    data-bind="value: filterText, valueUpdate: 'afterkeydown'" />
             </div>
             <hr>
-            <div>
+            <div id="list-div">
                 <h3>List</h3>
                 <ul data-bind="foreach: theListFiltered">
                     <li>
                         <p class="place-list" data-bind="text: title, click: $root.selectPlace"></p>
                     </li>
                 </ul>
+            </div>
+            <div>
+                <img class="img-fluid" src="" alt="FourSquare Retrieved Image" data-bind="attr: {src: imgSrc}">
             </div>
         </div>
         <div id="map"></div>
@@ -35,6 +60,7 @@
         src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=AIzaSyAF1w3vF1_GEntBalh-hUBq_CEGHjWF82I&v=3&callback=initMap">
     </script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/displayStyle.js"></script>
 </body>
 
 </html>

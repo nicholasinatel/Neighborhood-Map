@@ -1,3 +1,6 @@
+/**
+ * * MODEL
+ */
 var map;
 
 // Create a new blank array for all the listing markers.
@@ -15,15 +18,178 @@ var list = [];
 var CLIENT_ID_FQ = "EE24NJZ4PU4LJAG2NUDL3GHV55CQJ0VHM20VIM5G1UXYLRKT";
 var CLIENT_SECRET_FQ = "I4E51LOHGMUY5XKL24YVXUWDQQT55QGLHHVFJOBAFJ5OXOE1";
 
+var locations = [];
+
 
 function initMap() {
-
     // Create a styles array to use with the map.
     var styles = [{
+        "featureType": "all",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "saturation": 36
+            },
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 40
+            }
+        ]
+    },{
+        "featureType": "all",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "visibility": "off"
+            },
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 16
+            }
+        ]
+    },
+    {
+        "featureType": "all",
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "on"
+            }
+        ]
+    },{
         featureType: 'water',
         stylers: [{
             color: '#19a0d8'
         }]
+    }, {
+        "featureType": "administrative",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 20
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 17
+            },
+            {
+                "weight": 1.2
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 20
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 21
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 17
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 29
+            },
+            {
+                "weight": 0.2
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 18
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 16
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 19
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 17
+            }
+        ]
     }, {
         featureType: 'administrative',
         elementType: 'labels.text.stroke',
@@ -111,7 +277,7 @@ function initMap() {
             lat: 40.725248,
             lng: -73.996143
         },
-        zoom: 13,
+        zoom: 15,
         styles: styles,
         mapTypeControl: false
     });
@@ -123,103 +289,61 @@ function initMap() {
     // Bias the searchbox to within the bounds of the map.
     searchBox.setBounds(map.getBounds());
 
-
-    // These are the real estate listings that will be shown to the user.
-    // Normally we'd have these in a database instead.
-    // var locations = [{
-    //         title: 'Housing Works Bookstore Cafe',
-    //         id: "3fd66200f964a52020e61ee3",
-    //         location: {
-    //             lat: 40.72467539483391,
-    //             lng: -73.9966368227625
-    //         }
-    //     },
-    //     {
-    //         title: 'Gato',
-    //         id: "530fd80111d2a2ac65390a18",
-    //         location: {
-    //             lat: 40.7255277558998,
-    //             lng: -73.99506116064295
-    //         }
-    //     },
-    //     {
-    //         title: 'Estela',
-    //         id: "51c34f3d5019f1cc0e1d1211",
-    //         location: {
-    //             lat: 40.724681,
-    //             lng: -73.994725
-    //         }
-    //     },
-    //     {
-    //         title: 'Lure Fishbar',
-    //         id: "46ff98a7f964a520234b1fe3",
-    //         location: {
-    //             lat: 40.724703,
-    //             lng: -73.9983278
-    //         }
-    //     },
-    //     {
-    //         title: 'Emilios Ballato',
-    //         id: "4b0ddac5f964a520645123e3",
-    //         location: {
-    //             lat: 40.72482135181598,
-    //             lng: -73.9945343878065
-    //         }
-    //     }
-    // ];
-    /**
-     * * MODEL
-     */
-    var locations = [];
+    
 
     // var largeInfowindow = new google.maps.InfoWindow();
     window.largeInfowindow = new google.maps.InfoWindow();
 
     // Style the markers a bit. This will be our listing marker icon.
-    var defaultIcon = makeMarkerIcon('0091ff');
+    var defaultIcon = makeMarkerIcon('D2007B');
 
     // Create a "highlighted location" marker color for when the user
     // mouses over the marker.
     var highlightedIcon = makeMarkerIcon('FFFF24');
 
-    getPlacesFrom4Square(locations);
+    /**
+    * * OCTOPUS
+    */
 
-    console.log("locations: ", locations);
-    console.log("locations.length: ", locations.length);
+    /**
+     * Get 5 nearest restaurants from 4Square
+     * Passa default and highlightedIcons for markers
+     * Async
+     */
+    getPlacesFrom4Square(locations, defaultIcon, highlightedIcon);
 
-    // Create ViewModel
-    ko.applyBindings(new ViewModel());
+    // document.getElementById('show-listings').addEventListener('click', showListings);
 
+    // document.getElementById('hide-listings').addEventListener('click', function () {
+    //     hideMarkers(markers);
+    // });
 
-    document.getElementById('show-listings').addEventListener('click', showListings);
+    // document.getElementById('zoom-to-area').addEventListener('click', function () {
+    //     zoomToArea();
+    // });
 
-    document.getElementById('hide-listings').addEventListener('click', function () {
-        hideMarkers(markers);
-    });
+    // document.getElementById('search-within-time').addEventListener('click', function () {
+    //     searchWithinTime();
+    // });
 
-    document.getElementById('zoom-to-area').addEventListener('click', function () {
-        zoomToArea();
-    });
+    // // Listen for the event fired when the user selects a prediction from the
+    // // picklist and retrieve more details for that place.
+    // searchBox.addListener('places_changed', function () {
+    //     searchBoxPlaces(this);
+    // });
 
-    document.getElementById('search-within-time').addEventListener('click', function () {
-        searchWithinTime();
-    });
-
-    // Listen for the event fired when the user selects a prediction from the
-    // picklist and retrieve more details for that place.
-    searchBox.addListener('places_changed', function () {
-        searchBoxPlaces(this);
-    });
-
-    // Listen for the event fired when the user selects a prediction and clicks
-    // "go" more details for that place.
-    document.getElementById('go-places').addEventListener('click', textSearchPlaces);
+    // // Listen for the event fired when the user selects a prediction and clicks
+    // // "go" more details for that place.
+    // document.getElementById('go-places').addEventListener('click', textSearchPlaces);
 }
 
 // This function populates the infowindow when the marker is clicked. We'll only allow
 // one infowindow which will open at the marker that is clicked, and populate based
 // on that markers position.
 function populateInfoWindow(marker, infowindow) {
+
+    // koViewModel.selectPlace(marker, infowindow);
+
     // Check to make sure the infowindow is not already opened on this marker.
     if (infowindow.marker != marker) {
         // Clear the infowindow content to give the streetview time to load.
@@ -230,7 +354,7 @@ function populateInfoWindow(marker, infowindow) {
             infowindow.marker = null;
         });
         var streetViewService = new google.maps.StreetViewService();
-        var radius = 50;
+        var radius = 150;
         // In case the status is OK, which means the pano was found, compute the
         // position of the streetview image, then calculate the heading, then get a
         // panorama from that and set the options
@@ -272,7 +396,9 @@ function showListings() {
     }
     map.fitBounds(bounds);
 }
-
+/**
+ * Show or Hide Markers according to the knockout filter list
+ */
 function showSomeMarkers(selectedMarkers) {
     hideMarkers(markers);
     if (selectedMarkers.length < 5) {
@@ -287,7 +413,9 @@ function showSomeMarkers(selectedMarkers) {
         showListings();
     }
 }
-
+/**
+ * Show Only One Marker and Populate it
+ */
 function showSingleMark(place) {
     markers.forEach((elem, index, array) => {
         if (elem.title == place) {
@@ -439,8 +567,11 @@ function getPlacesDetails(marker, infowindow) {
         }
     });
 }
-
-function getPlacesFrom4Square(locations) {
+/**
+ * Hangle AJAX Request from FourSquare
+ * Call createMarkersArray() Upon Success
+ */
+function getPlacesFrom4Square(locations, defaultIcon, highlightedIcon) {
     $.ajax({
         type: "GET",
         dataType: 'json',
@@ -453,12 +584,6 @@ function getPlacesFrom4Square(locations) {
             "&query=restaurant" +
             "&limit=5",
         success: function (ajaxResp) {
-            // alert("Data Saved: " + ajaxResp);
-            // console.log("ajaxResp: ", ajaxResp);
-            // console.log("titles: ", ajaxResp.response.groups[0].items[0].venue.name);
-            // console.log("id: ", ajaxResp.response.groups[0].items[0].venue.id);
-            // console.log("lat: ", ajaxResp.response.groups[0].items[0].venue.location.lat);
-            // console.log("long: ", ajaxResp.response.groups[0].items[0].venue.location.lng);
 
             const respArray = ajaxResp.response.groups[0].items;
 
@@ -474,17 +599,18 @@ function getPlacesFrom4Square(locations) {
     
                 locations.push(venue);
             }
-            console.log("FIRST");
-            createMarkersArray(locations);
+            createMarkersArray(locations, defaultIcon, highlightedIcon);
         },
         error: function (e) {
-            alert("Could not retrieve data from FourSquare API");
+            alert("Could not retrieve data from FourSquare API, maybe your quota is exceeded");
         }
     });
 }
-
-function createMarkersArray(locations) {
-    console.log("SECOND");
+/**
+ * Create the Array With Markers Only After Succesfull AJAX Request
+ */
+function createMarkersArray(locations, defaultIcon, highlightedIcon) {
+    
         // The following group uses the location array to create an array of markers on initialize.
         for (var i = 0; i < locations.length; i++) {
             // Get the position from the location array.
@@ -493,7 +619,8 @@ function createMarkersArray(locations) {
     
             var listObj = {
                 title: locations[i].title,
-                position: locations[i].location
+                position: locations[i].location,
+                id: locations[i].id
             };
     
             list.push(listObj);
@@ -521,20 +648,70 @@ function createMarkersArray(locations) {
                 this.setIcon(defaultIcon);
             });
         }
+
+    // Create ViewModel
+    ko.applyBindings(new ViewModel());
 }
 
+
+/**
+ * * VIEW 
+ */
 var ViewModel = function () {
     var self = this;
 
+    /**
+     * Observables
+     */
     self.filterText = ko.observable(""); // Text from search field
 
     this.theList = ko.observableArray(list);
 
-    this.selectPlace = function (data, event) {
-        // do something here
-        showSingleMark(data.title);
+    this.imgSrc = ko.observable();
+
+    this.toggleShow =  ko.observable(true);
+
+    this.clickToggle = function() {
+        if(self.toggleShow() == true){
+            self.toggleShow(false);
+            $('#map').css('left','0px');
+        }
+            
+        else if(self.toggleShow() == false){
+            self.toggleShow(true);
+            $('#map').css('left','362px');
+        }
     }
 
+    /**
+     * Retrieve Image Upon List Click
+     */
+    this.selectPlace = function (data, event) {
+        showSingleMark(data.title);
+        $.ajax({
+            type: "GET",
+            dataType: 'json',
+            url: `https://api.foursquare.com/v2/venues/${data.id}/photos`,
+            data: "client_id=" + CLIENT_ID_FQ +
+                "&client_secret=" + CLIENT_SECRET_FQ +
+                "&v=20180323" +
+                "&limit=1",
+            success: function (ajaxResp) {
+                var buildImg = ajaxResp.response.photos.items[0].prefix;
+                buildImg += "240x240";
+                buildImg += ajaxResp.response.photos.items[0].suffix;
+                self.imgSrc(buildImg);
+            },
+            error: function (e) {
+                console.error(e);
+                alert("Could not retrieve data from FourSquare API, maybe your quota is exceeded");
+            }
+        });
+    }
+
+    /**
+     * Filtered List
+     */
     self.theListFiltered = ko.computed(function () {
         fText = self.filterText().replace(/\s+/g, ' ');
         var filteredList = ko.utils.arrayFilter(self.theList(), function (test) {
