@@ -24,263 +24,256 @@ var locations = [];
 function initMap() {
     // Create a styles array to use with the map.
     var styles = [{
-        "featureType": "all",
-        "elementType": "labels.text.fill",
-        "stylers": [
-            {
-                "saturation": 36
-            },
-            {
-                "color": "#000000"
-            },
-            {
-                "lightness": 40
-            }
-        ]
-    },{
-        "featureType": "all",
-        "elementType": "labels.text.stroke",
-        "stylers": [
-            {
-                "visibility": "off"
-            },
-            {
-                "color": "#000000"
-            },
-            {
-                "lightness": 16
-            }
-        ]
-    },
-    {
-        "featureType": "all",
-        "elementType": "labels.icon",
-        "stylers": [
-            {
-                "visibility": "on"
-            }
-        ]
-    },{
-        featureType: 'water',
-        stylers: [{
-            color: '#19a0d8'
-        }]
-    }, {
-        "featureType": "administrative",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "color": "#000000"
-            },
-            {
-                "lightness": 20
-            }
-        ]
-    },
-    {
-        "featureType": "administrative",
-        "elementType": "geometry.stroke",
-        "stylers": [
-            {
-                "color": "#000000"
-            },
-            {
-                "lightness": 17
-            },
-            {
-                "weight": 1.2
-            }
-        ]
-    },
-    {
-        "featureType": "landscape",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#000000"
-            },
-            {
-                "lightness": 20
-            }
-        ]
-    },
-    {
-        "featureType": "poi",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#000000"
-            },
-            {
-                "lightness": 21
-            }
-        ]
-    },
-    {
-        "featureType": "road.highway",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "color": "#000000"
-            },
-            {
-                "lightness": 17
-            }
-        ]
-    },
-    {
-        "featureType": "road.highway",
-        "elementType": "geometry.stroke",
-        "stylers": [
-            {
-                "color": "#000000"
-            },
-            {
-                "lightness": 29
-            },
-            {
-                "weight": 0.2
-            }
-        ]
-    },
-    {
-        "featureType": "road.arterial",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#000000"
-            },
-            {
-                "lightness": 18
-            }
-        ]
-    },
-    {
-        "featureType": "road.local",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#000000"
-            },
-            {
-                "lightness": 16
-            }
-        ]
-    },
-    {
-        "featureType": "transit",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#000000"
-            },
-            {
-                "lightness": 19
-            }
-        ]
-    },
-    {
-        "featureType": "water",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#000000"
-            },
-            {
-                "lightness": 17
-            }
-        ]
-    }, {
-        featureType: 'administrative',
-        elementType: 'labels.text.stroke',
-        stylers: [{
-                color: '#ffffff'
-            },
-            {
-                weight: 6
-            }
-        ]
-    }, {
-        featureType: 'administrative',
-        elementType: 'labels.text.fill',
-        stylers: [{
-            color: '#e85113'
-        }]
-    }, {
-        featureType: 'road.highway',
-        elementType: 'geometry.stroke',
-        stylers: [{
-                color: '#efe9e4'
-            },
-            {
-                lightness: -40
-            }
-        ]
-    }, {
-        featureType: 'transit.station',
-        stylers: [{
-                weight: 9
-            },
-            {
-                hue: '#e85113'
-            }
-        ]
-    }, {
-        featureType: 'road.highway',
-        elementType: 'labels.icon',
-        stylers: [{
-            visibility: 'off'
-        }]
-    }, {
-        featureType: 'water',
-        elementType: 'labels.text.stroke',
-        stylers: [{
-            lightness: 100
-        }]
-    }, {
-        featureType: 'water',
-        elementType: 'labels.text.fill',
-        stylers: [{
-            lightness: -100
-        }]
-    }, {
-        featureType: 'water',
-        elementType: 'labels.text.fill',
-        stylers: [{
-            lightness: 100
-        }]
-    }, {
-        featureType: 'poi',
-        elementType: 'geometry',
-        stylers: [{
-                visibility: 'on'
-            },
-            {
-                color: '#f0e4d3'
-            }
-        ]
-    }, {
-        featureType: 'road.highway',
-        elementType: 'geometry.fill',
-        stylers: [{
-                color: '#efe9e4'
-            },
-            {
-                lightness: -25
-            }
-        ]
-    }];
-
-    // Constructor creates a new map - only center and zoom are required.
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: {
-            lat: 40.725248,
-            lng: -73.996143
+            "featureType": "all",
+            "elementType": "labels.text.fill",
+            "stylers": [{
+                    "saturation": 36
+                },
+                {
+                    "color": "#000000"
+                },
+                {
+                    "lightness": 40
+                }
+            ]
+        }, {
+            "featureType": "all",
+            "elementType": "labels.text.stroke",
+            "stylers": [{
+                    "visibility": "off"
+                },
+                {
+                    "color": "#000000"
+                },
+                {
+                    "lightness": 16
+                }
+            ]
         },
-        zoom: 15,
-        styles: styles,
-        mapTypeControl: false
-    });
+        {
+            "featureType": "all",
+            "elementType": "labels.icon",
+            "stylers": [{
+                "visibility": "on"
+            }]
+        }, {
+            featureType: 'water',
+            stylers: [{
+                color: '#19a0d8'
+            }]
+        }, {
+            "featureType": "administrative",
+            "elementType": "geometry.fill",
+            "stylers": [{
+                    "color": "#000000"
+                },
+                {
+                    "lightness": 20
+                }
+            ]
+        },
+        {
+            "featureType": "administrative",
+            "elementType": "geometry.stroke",
+            "stylers": [{
+                    "color": "#000000"
+                },
+                {
+                    "lightness": 17
+                },
+                {
+                    "weight": 1.2
+                }
+            ]
+        },
+        {
+            "featureType": "landscape",
+            "elementType": "geometry",
+            "stylers": [{
+                    "color": "#000000"
+                },
+                {
+                    "lightness": 20
+                }
+            ]
+        },
+        {
+            "featureType": "poi",
+            "elementType": "geometry",
+            "stylers": [{
+                    "color": "#000000"
+                },
+                {
+                    "lightness": 21
+                }
+            ]
+        },
+        {
+            "featureType": "road.highway",
+            "elementType": "geometry.fill",
+            "stylers": [{
+                    "color": "#000000"
+                },
+                {
+                    "lightness": 17
+                }
+            ]
+        },
+        {
+            "featureType": "road.highway",
+            "elementType": "geometry.stroke",
+            "stylers": [{
+                    "color": "#000000"
+                },
+                {
+                    "lightness": 29
+                },
+                {
+                    "weight": 0.2
+                }
+            ]
+        },
+        {
+            "featureType": "road.arterial",
+            "elementType": "geometry",
+            "stylers": [{
+                    "color": "#000000"
+                },
+                {
+                    "lightness": 18
+                }
+            ]
+        },
+        {
+            "featureType": "road.local",
+            "elementType": "geometry",
+            "stylers": [{
+                    "color": "#000000"
+                },
+                {
+                    "lightness": 16
+                }
+            ]
+        },
+        {
+            "featureType": "transit",
+            "elementType": "geometry",
+            "stylers": [{
+                    "color": "#000000"
+                },
+                {
+                    "lightness": 19
+                }
+            ]
+        },
+        {
+            "featureType": "water",
+            "elementType": "geometry",
+            "stylers": [{
+                    "color": "#000000"
+                },
+                {
+                    "lightness": 17
+                }
+            ]
+        }, {
+            featureType: 'administrative',
+            elementType: 'labels.text.stroke',
+            stylers: [{
+                    color: '#ffffff'
+                },
+                {
+                    weight: 6
+                }
+            ]
+        }, {
+            featureType: 'administrative',
+            elementType: 'labels.text.fill',
+            stylers: [{
+                color: '#e85113'
+            }]
+        }, {
+            featureType: 'road.highway',
+            elementType: 'geometry.stroke',
+            stylers: [{
+                    color: '#efe9e4'
+                },
+                {
+                    lightness: -40
+                }
+            ]
+        }, {
+            featureType: 'transit.station',
+            stylers: [{
+                    weight: 9
+                },
+                {
+                    hue: '#e85113'
+                }
+            ]
+        }, {
+            featureType: 'road.highway',
+            elementType: 'labels.icon',
+            stylers: [{
+                visibility: 'off'
+            }]
+        }, {
+            featureType: 'water',
+            elementType: 'labels.text.stroke',
+            stylers: [{
+                lightness: 100
+            }]
+        }, {
+            featureType: 'water',
+            elementType: 'labels.text.fill',
+            stylers: [{
+                lightness: -100
+            }]
+        }, {
+            featureType: 'water',
+            elementType: 'labels.text.fill',
+            stylers: [{
+                lightness: 100
+            }]
+        }, {
+            featureType: 'poi',
+            elementType: 'geometry',
+            stylers: [{
+                    visibility: 'on'
+                },
+                {
+                    color: '#f0e4d3'
+                }
+            ]
+        }, {
+            featureType: 'road.highway',
+            elementType: 'geometry.fill',
+            stylers: [{
+                    color: '#efe9e4'
+                },
+                {
+                    lightness: -25
+                }
+            ]
+        }
+    ];
+
+    try {
+        // Constructor creates a new map - only center and zoom are required.
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {
+                lat: 40.725248,
+                lng: -73.996143
+            },
+            zoom: 15,
+            styles: styles,
+            mapTypeControl: false
+        });
+    } catch (error) {
+        alert(error);
+        console.error(error.message);
+    }
+
 
 
     // Create a searchbox in order to execute a places search
@@ -289,7 +282,7 @@ function initMap() {
     // Bias the searchbox to within the bounds of the map.
     searchBox.setBounds(map.getBounds());
 
-    
+
 
     // var largeInfowindow = new google.maps.InfoWindow();
     window.largeInfowindow = new google.maps.InfoWindow();
@@ -302,8 +295,8 @@ function initMap() {
     var highlightedIcon = makeMarkerIcon('FFFF24');
 
     /**
-    * * OCTOPUS
-    */
+     * * OCTOPUS
+     */
 
     /**
      * Get 5 nearest restaurants from 4Square
@@ -312,29 +305,6 @@ function initMap() {
      */
     getPlacesFrom4Square(locations, defaultIcon, highlightedIcon);
 
-    // document.getElementById('show-listings').addEventListener('click', showListings);
-
-    // document.getElementById('hide-listings').addEventListener('click', function () {
-    //     hideMarkers(markers);
-    // });
-
-    // document.getElementById('zoom-to-area').addEventListener('click', function () {
-    //     zoomToArea();
-    // });
-
-    // document.getElementById('search-within-time').addEventListener('click', function () {
-    //     searchWithinTime();
-    // });
-
-    // // Listen for the event fired when the user selects a prediction from the
-    // // picklist and retrieve more details for that place.
-    // searchBox.addListener('places_changed', function () {
-    //     searchBoxPlaces(this);
-    // });
-
-    // // Listen for the event fired when the user selects a prediction and clicks
-    // // "go" more details for that place.
-    // document.getElementById('go-places').addEventListener('click', textSearchPlaces);
 }
 
 // This function populates the infowindow when the marker is clicked. We'll only allow
@@ -342,7 +312,15 @@ function initMap() {
 // on that markers position.
 function populateInfoWindow(marker, infowindow) {
 
-    // koViewModel.selectPlace(marker, infowindow);
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+    setTimeout(function(){ marker.setAnimation(null); }, 3000);
+    // if (marker.getAnimation() !== null) {
+    //     marker.setAnimation(null);
+    //     console.log("do not");
+    // } else {
+    //     marker.setAnimation(google.maps.Animation.BOUNCE);
+    //     console.log("animate");
+    // }
 
     // Check to make sure the infowindow is not already opened on this marker.
     if (infowindow.marker != marker) {
@@ -480,92 +458,104 @@ function zoomToArea() {
 
 // This function creates markers for each place found in either places search.
 function createMarkersForPlaces(places) {
-    var bounds = new google.maps.LatLngBounds();
-    for (var i = 0; i < places.length; i++) {
-        var place = places[i];
-        var icon = {
-            url: place.icon,
-            size: new google.maps.Size(35, 35),
-            origin: new google.maps.Point(0, 0),
-            anchor: new google.maps.Point(15, 34),
-            scaledSize: new google.maps.Size(25, 25)
-        };
-        // Create a marker for each place.
-        var marker = new google.maps.Marker({
-            map: map,
-            icon: icon,
-            title: place.name,
-            position: place.geometry.location,
-            id: place.place_id
-        });
-        // Create a single infowindow to be used with the place details information
-        // so that only one is open at once.
-        var placeInfoWindow = new google.maps.InfoWindow();
-        // If a marker is clicked, do a place details search on it in the next function.
-        marker.addListener('click', function () {
-            if (placeInfoWindow.marker == this) {
-                console.log("This infowindow already is on this marker!");
+    try {
+        var bounds = new google.maps.LatLngBounds();
+        for (var i = 0; i < places.length; i++) {
+            var place = places[i];
+            var icon = {
+                url: place.icon,
+                size: new google.maps.Size(35, 35),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(15, 34),
+                scaledSize: new google.maps.Size(25, 25)
+            };
+            // Create a marker for each place.
+            var marker = new google.maps.Marker({
+                map: map,
+                icon: icon,
+                title: place.name,
+                position: place.geometry.location,
+                id: place.place_id
+            });
+            // Create a single infowindow to be used with the place details information
+            // so that only one is open at once.
+            var placeInfoWindow = new google.maps.InfoWindow();
+            // If a marker is clicked, do a place details search on it in the next function.
+            marker.addListener('click', function () {
+                if (placeInfoWindow.marker == this) {
+                    console.log("This infowindow already is on this marker!");
+                } else {
+                    getPlacesDetails(this, placeInfoWindow);
+                }
+            });
+
+            placeMarkers.push(marker);
+            if (place.geometry.viewport) {
+                // Only geocodes have viewport.
+                bounds.union(place.geometry.viewport);
             } else {
-                getPlacesDetails(this, placeInfoWindow);
+                bounds.extend(place.geometry.location);
             }
-        });
-        placeMarkers.push(marker);
-        if (place.geometry.viewport) {
-            // Only geocodes have viewport.
-            bounds.union(place.geometry.viewport);
-        } else {
-            bounds.extend(place.geometry.location);
         }
+        map.fitBounds(bounds);
+    } catch (error) {
+        alert(error);
     }
-    map.fitBounds(bounds);
+
 }
+
 
 // This is the PLACE DETAILS search - it's the most detailed so it's only
 // executed when a marker is selected, indicating the user wants more
 // details about that place.
 function getPlacesDetails(marker, infowindow) {
-    var service = new google.maps.places.PlacesService(map);
-    service.getDetails({
-        placeId: marker.id
-    }, function (place, status) {
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-            // Set the marker property on this infowindow so it isn't created again.
-            infowindow.marker = marker;
-            var innerHTML = '<div>';
-            if (place.name) {
-                innerHTML += '<strong>' + place.name + '</strong>';
+    try {
+        var service = new google.maps.places.PlacesService(map);
+        service.getDetails({
+            placeId: marker.id
+        }, function (place, status) {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+                // Set the marker property on this infowindow so it isn't created again.
+                infowindow.marker = marker;
+                var innerHTML = '<div>';
+                if (place.name) {
+                    innerHTML += '<strong>' + place.name + '</strong>';
+                }
+                if (place.formatted_address) {
+                    innerHTML += '<br>' + place.formatted_address;
+                }
+                if (place.formatted_phone_number) {
+                    innerHTML += '<br>' + place.formatted_phone_number;
+                }
+                if (place.opening_hours) {
+                    innerHTML += '<br><br><strong>Hours:</strong><br>' +
+                        place.opening_hours.weekday_text[0] + '<br>' +
+                        place.opening_hours.weekday_text[1] + '<br>' +
+                        place.opening_hours.weekday_text[2] + '<br>' +
+                        place.opening_hours.weekday_text[3] + '<br>' +
+                        place.opening_hours.weekday_text[4] + '<br>' +
+                        place.opening_hours.weekday_text[5] + '<br>' +
+                        place.opening_hours.weekday_text[6];
+                }
+                if (place.photos) {
+                    innerHTML += '<br><br><img src="' + place.photos[0].getUrl({
+                        maxHeight: 100,
+                        maxWidth: 200
+                    }) + '">';
+                }
+                innerHTML += '</div>';
+                infowindow.setContent(innerHTML);
+                infowindow.open(map, marker);
+                // Make sure the marker property is cleared if the infowindow is closed.
+                infowindow.addListener('closeclick', function () {
+                    infowindow.marker = null;
+                });
             }
-            if (place.formatted_address) {
-                innerHTML += '<br>' + place.formatted_address;
-            }
-            if (place.formatted_phone_number) {
-                innerHTML += '<br>' + place.formatted_phone_number;
-            }
-            if (place.opening_hours) {
-                innerHTML += '<br><br><strong>Hours:</strong><br>' +
-                    place.opening_hours.weekday_text[0] + '<br>' +
-                    place.opening_hours.weekday_text[1] + '<br>' +
-                    place.opening_hours.weekday_text[2] + '<br>' +
-                    place.opening_hours.weekday_text[3] + '<br>' +
-                    place.opening_hours.weekday_text[4] + '<br>' +
-                    place.opening_hours.weekday_text[5] + '<br>' +
-                    place.opening_hours.weekday_text[6];
-            }
-            if (place.photos) {
-                innerHTML += '<br><br><img src="' + place.photos[0].getUrl({
-                    maxHeight: 100,
-                    maxWidth: 200
-                }) + '">';
-            }
-            innerHTML += '</div>';
-            infowindow.setContent(innerHTML);
-            infowindow.open(map, marker);
-            // Make sure the marker property is cleared if the infowindow is closed.
-            infowindow.addListener('closeclick', function () {
-                infowindow.marker = null;
-            });
-        }
-    });
+        });
+    } catch (err0r) {
+        alert(error);
+    }
+
 }
 /**
  * Hangle AJAX Request from FourSquare
@@ -587,7 +577,7 @@ function getPlacesFrom4Square(locations, defaultIcon, highlightedIcon) {
 
             const respArray = ajaxResp.response.groups[0].items;
 
-            for(var i = 0; i < respArray.length; i++){
+            for (var i = 0; i < respArray.length; i++) {
                 let venue = {
                     title: respArray[i].venue.name,
                     id: respArray[i].venue.id,
@@ -596,7 +586,7 @@ function getPlacesFrom4Square(locations, defaultIcon, highlightedIcon) {
                         lng: respArray[i].venue.location.lng
                     }
                 }
-    
+
                 locations.push(venue);
             }
             createMarkersArray(locations, defaultIcon, highlightedIcon);
@@ -610,44 +600,44 @@ function getPlacesFrom4Square(locations, defaultIcon, highlightedIcon) {
  * Create the Array With Markers Only After Succesfull AJAX Request
  */
 function createMarkersArray(locations, defaultIcon, highlightedIcon) {
-    
-        // The following group uses the location array to create an array of markers on initialize.
-        for (var i = 0; i < locations.length; i++) {
-            // Get the position from the location array.
-            var position = locations[i].location;
-            var title = locations[i].title;
-    
-            var listObj = {
-                title: locations[i].title,
-                position: locations[i].location,
-                id: locations[i].id
-            };
-    
-            list.push(listObj);
-    
-            // Create a marker per location, and put into markers array.
-            var marker = new google.maps.Marker({
-                position: position,
-                title: title,
-                animation: google.maps.Animation.DROP,
-                icon: defaultIcon,
-                id: i
-            });
-            // Push the marker to our array of markers.
-            markers.push(marker);
-            // Create an onclick event to open the large infowindow at each marker.
-            marker.addListener('click', function () {
-                populateInfoWindow(this, largeInfowindow);
-            });
-            // Two event listeners - one for mouseover, one for mouseout,
-            // to change the colors back and forth.
-            marker.addListener('mouseover', function () {
-                this.setIcon(highlightedIcon);
-            });
-            marker.addListener('mouseout', function () {
-                this.setIcon(defaultIcon);
-            });
-        }
+
+    // The following group uses the location array to create an array of markers on initialize.
+    for (var i = 0; i < locations.length; i++) {
+        // Get the position from the location array.
+        var position = locations[i].location;
+        var title = locations[i].title;
+
+        var listObj = {
+            title: locations[i].title,
+            position: locations[i].location,
+            id: locations[i].id
+        };
+
+        list.push(listObj);
+
+        // Create a marker per location, and put into markers array.
+        var marker = new google.maps.Marker({
+            position: position,
+            title: title,
+            animation: google.maps.Animation.DROP,
+            icon: defaultIcon,
+            id: i
+        });
+        // Push the marker to our array of markers.
+        markers.push(marker);
+        // Create an onclick event to open the large infowindow at each marker.
+        marker.addListener('click', function () {
+            populateInfoWindow(this, largeInfowindow);
+        });
+        // Two event listeners - one for mouseover, one for mouseout,
+        // to change the colors back and forth.
+        marker.addListener('mouseover', function () {
+            this.setIcon(highlightedIcon);
+        });
+        marker.addListener('mouseout', function () {
+            this.setIcon(defaultIcon);
+        });
+    }
 
     // Create ViewModel
     ko.applyBindings(new ViewModel());
@@ -669,17 +659,15 @@ var ViewModel = function () {
 
     this.imgSrc = ko.observable();
 
-    this.toggleShow =  ko.observable(true);
+    this.toggleShow = ko.observable(true);
 
-    this.clickToggle = function() {
-        if(self.toggleShow() == true){
+    this.clickToggle = function () {
+        if (self.toggleShow() == true) {
             self.toggleShow(false);
-            $('#map').css('left','0px');
-        }
-            
-        else if(self.toggleShow() == false){
+            $('#map').css('left', '0px');
+        } else if (self.toggleShow() == false) {
             self.toggleShow(true);
-            $('#map').css('left','362px');
+            $('#map').css('left', '362px');
         }
     }
 
