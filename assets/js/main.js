@@ -311,7 +311,8 @@ function initMap() {
 // one infowindow which will open at the marker that is clicked, and populate based
 // on that markers position.
 function populateInfoWindow(marker, infowindow) {
-
+    
+    // https://stackoverflow.com/questions/7339200/bounce-a-pin-in-google-maps-once
     marker.setAnimation(google.maps.Animation.BOUNCE);
     setTimeout(function(){ marker.setAnimation(null); }, 3000);
     // if (marker.getAnimation() !== null) {
@@ -458,6 +459,7 @@ function zoomToArea() {
 
 // This function creates markers for each place found in either places search.
 function createMarkersForPlaces(places) {
+    // https://stackoverflow.com/questions/45338480/try-catch-for-error-message-in-google-maps-api
     try {
         var bounds = new google.maps.LatLngBounds();
         for (var i = 0; i < places.length; i++) {
