@@ -315,13 +315,6 @@ function populateInfoWindow(marker, infowindow) {
     // https://stackoverflow.com/questions/7339200/bounce-a-pin-in-google-maps-once
     marker.setAnimation(google.maps.Animation.BOUNCE);
     setTimeout(function(){ marker.setAnimation(null); }, 3000);
-    // if (marker.getAnimation() !== null) {
-    //     marker.setAnimation(null);
-    //     console.log("do not");
-    // } else {
-    //     marker.setAnimation(google.maps.Animation.BOUNCE);
-    //     console.log("animate");
-    // }
 
     // Check to make sure the infowindow is not already opened on this marker.
     if (infowindow.marker != marker) {
@@ -666,10 +659,14 @@ var ViewModel = function () {
     this.clickToggle = function () {
         if (self.toggleShow() == true) {
             self.toggleShow(false);
-            $('#map').css('left', '0px');
+            $('.left-panel').css('display', 'none');
+            $('#map-div').css('display', 'block');
+            // $('canvas').css('display', 'none');
         } else if (self.toggleShow() == false) {
             self.toggleShow(true);
-            $('#map').css('left', '362px');
+            $('.left-panel').css('display', 'block');
+            $('#map-div').css('display', 'none');
+            // $('canvas').css('display', 'block');
         }
     }
 

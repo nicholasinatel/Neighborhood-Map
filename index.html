@@ -16,7 +16,7 @@
 </head>
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Nick Locations</a>
+        <a class="navbar-brand" href="http://nicklobo.com.br/">Nicholas Lobo</a>
         <button data-bind="click: clickToggle" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -32,27 +32,36 @@
 
 <body>
     <div class="container-fluid">
-        <div class="options-box" data-bind="visible: toggleShow">
-            <h1>Nick Locations</h1>
-            <div>
-                <input id="nick-location-input" type="text"
-                    data-bind="value: filterText, valueUpdate: 'afterkeydown'" />
+        <div class="row">
+            <div class="col-lg-3  col-md-4 left-panel">
+                <canvas id="canvas"></canvas>
+                <div class="options-box" data-bind="visible: toggleShow">
+                    <h1>List Filter</h1>
+                    <div>
+                        <input id="nick-location-input" type="text"
+                            data-bind="value: filterText, valueUpdate: 'afterkeydown'" />
+                    </div>
+                    <hr>
+                    <div id="list-div">
+                        <h3>List</h3>
+                        <ul data-bind="foreach: theListFiltered">
+                            <li>
+                                <p class="place-list" data-bind="text: title, click: $root.selectPlace"></p>
+                            </li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                        <h4>FourSquare API</h4>
+                        <img class="rounded" src="" alt="" data-bind="attr: {src: imgSrc}">
+                    </div>
+                    <hr>
+                </div>
             </div>
-            <hr>
-            <div id="list-div">
-                <h3>List</h3>
-                <ul data-bind="foreach: theListFiltered">
-                    <li>
-                        <p class="place-list" data-bind="text: title, click: $root.selectPlace"></p>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <h4>Here comes images retrieved from FourSquare API</h4>
-                <img class="img-fluid" src="" alt="images" data-bind="attr: {src: imgSrc}">
+            <div class="col-lg-9 col-md-8" id="map-div">
+                <div id="map"></div>
             </div>
         </div>
-        <div id="map"></div>
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -61,6 +70,7 @@
         src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=AIzaSyAF1w3vF1_GEntBalh-hUBq_CEGHjWF82I&v=3&callback=initMap">
     </script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/canvas.js"></script>
 </body>
 
 </html>
